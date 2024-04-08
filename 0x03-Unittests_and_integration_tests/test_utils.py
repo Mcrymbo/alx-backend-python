@@ -61,19 +61,22 @@ class TestMemoize(unittest.TestCase):
     test memoize class
     """
 
-    class TestClass:
-        """ test class """
-        def a_method(self):
-            """ returns 42 always """
-            return 42
+    def test_memoize(self):
+        ''' calls a property twice '''
 
-        @memoize
-        def a_property(self):
-            """ returns memoize property """
-            return self.a_method()
+        class TestClass:
+            """ test class """
+            def a_method(self):
+                """ returns 42 always """
+                return 42
 
-    with patch.object(TestClass, 'a_method', return_value=42) as fun:
-        test = TestClass()
-        test.a_property
-        test.a_property
-        fun.asset_called_once()
+            @memoize
+            def a_property(self):
+                """ returns memoize property """
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method', return_value=42) as fun:
+            test = TestClass()
+            test.a_property
+            test.a_property
+            fun.asset_called_once()
