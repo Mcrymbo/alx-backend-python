@@ -108,6 +108,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         self.mock.assert_called()
 
     @classmethod
-    def teardownClass(cls):
+    def tearDownClass(cls):
         ''' called after all tests in a class have run '''
         cls.get_patcher.stop()
